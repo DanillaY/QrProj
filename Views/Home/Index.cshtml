@@ -1,0 +1,44 @@
+﻿@using copyqr.Models.Entities;
+@model IEnumerable<QrInfo>
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css"/>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <link href="~/favicon.ico" rel="icon" type="image/ico"/>
+</head>
+<body>
+    <header>
+        <div>
+            <img class="HeaderLogo" src="~/lib/HeaderImage.png" style="display: inline-block;" />
+            <h1 class="HeaderTitle">QrViewer</h1>
+        </div>
+    </header>
+    @{
+        if (!Model.Any())
+        {
+                    <div class="card">
+                        <p class="Title">:(</p>
+                        <div class="container">
+                            <p class="Title">В базе нет данных</p>
+                        </div>
+                    </div>
+        }
+        foreach (var card in Model)
+        {
+            string imgPath = Directory.GetCurrentDirectory() + "\\wwwroot\\" + card.Id + ".png";
+            string shortPath = card.Id + ".png";
+            if (!File.Exists(imgPath))
+                File.WriteAllBytes(imgPath, card.Image);
+                    <div class="card">
+                        <img class="QrCode" src="@shortPath">
+                        <div class="container">
+                            <p class="Title">@card.ContentEncode</p>
+                            <p style="padding-bottom: 10%;">@card.DateCreated.Value.ToLongDateString()</p>
+                        </div>
+                    </div>
+        }
+    }
+</body>

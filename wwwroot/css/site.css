@@ -1,0 +1,93 @@
+html, body {
+    height: 100%;
+}
+
+p.Title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    font-family: Candara;
+}
+
+p {
+    text-align: center;
+    font-family: Candara;
+}
+
+header {
+    background: white;
+    height: 70px;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(90deg,#c94b4b,#4b134f);
+    background-size: 200%;
+    animation: grad_anim 15s ease infinite;
+}
+
+.card:hover {
+    box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
+    position: relative;
+    animation: lift 2s ease forwards;
+}
+
+img.QrCode {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5%;
+    border-radius: 20px;
+    width: 50%;
+}
+
+img.HeaderLogo {
+    position: relative;
+    display: inline-block;
+    height: 70%;
+    width: auto;
+    left: 30px;
+    top: 10px;
+}
+
+.HeaderTitle {
+    font-weight: 700;
+    font-size: 30px;
+    position: relative;
+    display: inline-block;
+    left: 50px;
+    bottom: 5px;
+    font-family: Candara;
+}
+
+.card {
+    display: inline-block;
+    background-color: white;
+    border-radius: 30px;
+    width: 13%;
+    margin: 30px;
+}
+
+@keyframes lift {
+    0% {
+        bottom: 5px
+    }
+
+    100% {
+        bottom: 15px;
+    }
+}
+
+@keyframes grad_anim {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
